@@ -31,6 +31,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
@@ -38,7 +39,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityAltar extends TileBase implements ITickable {
+public class TileEntityAltar extends TileBase implements ITickableTileEntity {
 
   private AltarState altarState = AltarState.NONE;
   private int activeTicks = 0, intervalTicks = -1;
@@ -159,7 +160,7 @@ public class TileEntityAltar extends TileBase implements ITickable {
   }
 
   @Override
-  public void update() {
+  public void tick() {
     if (this.getWorld().isRemote) {
       RgbColor rgbColor;
       if(SolarUtil.isDay(getWorld())){

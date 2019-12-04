@@ -1,32 +1,22 @@
 package mart.solar.util;
 
+import mart.solar.enums.EnumEnergy;
+import mart.solar.enums.IEnergyEnum;
+import mart.solar.init.ModItems;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
+import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
+
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Nonnull;
-
-import baubles.api.BaublesApi;
-import epicsquid.mysticallib.MysticalLib;
-import epicsquid.mysticallib.item.ItemBase;
-import epicsquid.mysticallib.network.PacketHandler;
-import mart.solar.capability.energycapability.EnergyCapabilityProvider;
-import mart.solar.capability.energycapability.IEnergyCapability;
-import mart.solar.enums.EnumEnergy;
-import mart.solar.enums.IEnergyEnum;
-import mart.solar.init.ModItems;
-import mart.solar.network.EnergyCapabilityMessage;
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
-import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class SolarUtil {
 
@@ -39,19 +29,19 @@ public class SolarUtil {
     elementBlocks.put(Blocks.STONE,       EnumEnergy.EARTH);
     elementBlocks.put(Blocks.LAVA,        EnumEnergy.FIRE);
     elementBlocks.put(Blocks.WATER,       EnumEnergy.WATER);
-    elementBlocks.put(Blocks.TALLGRASS,   EnumEnergy.WIND);
+    elementBlocks.put(Blocks.TALL_GRASS,   EnumEnergy.WIND);
     elementBlocks.put(Blocks.WHEAT,       EnumEnergy.LIFE);
     elementBlocks.put(Blocks.DIAMOND_ORE, EnumEnergy.TIME);
     elementBlocks.put(Blocks.COAL_ORE,    EnumEnergy.TIME);
     elementBlocks.put(Blocks.COAL_BLOCK,  EnumEnergy.TIME);
     elementBlocks.put(Blocks.GOLD_ORE,    EnumEnergy.SOLAR);
 
-    for(ItemStack stack : OreDictionary.getOres("oreSilver")){
-      if(stack.getItem() instanceof ItemBlock){
-        ItemBlock blockItem = (ItemBlock) stack.getItem();
-        elementBlocks.put(blockItem.getBlock(), EnumEnergy.LUNAR);
-      }
-    }
+//    for(ItemStack stack : OreDictionary.getOres("oreSilver")){
+//      if(stack.getItem() instanceof ItemBlock){
+//        ItemBlock blockItem = (ItemBlock) stack.getItem();
+//        elementBlocks.put(blockItem.getBlock(), EnumEnergy.LUNAR);
+//      }
+//    }
 
     //Element Runes
     elementRunes.put(EnumEnergy.EARTH, ModItems.earth_rune);
@@ -84,7 +74,7 @@ public class SolarUtil {
     return EnumEnergy.SOLAR;
   }
 
-  public static boolean addStackToInventory(int slot, ItemStackHandler inventory, ItemStack heldItem, EntityPlayer player, EnumHand hand){
+  public static boolean addStackToInventory(int slot, ItemStackHandler inventory, ItemStack heldItem, PlayerEntity player, Hand hand){
     if (inventory.getStackInSlot(slot).isEmpty()) {
       ItemStack insertStack = heldItem.copy();
       insertStack.setCount(1);
@@ -102,59 +92,59 @@ public class SolarUtil {
   }
 
   public static boolean isDay(World world) {
-    long dayTime = world.getWorldTime() % 24000;
+    long dayTime = world.getGameTime() % 24000;
 
     return dayTime < 12566 || dayTime > 23450;
   }
 
-  public static void removeEnergyFromBaubleItem(EntityPlayer player, int slot, float amount){
-    ItemStack stack = BaublesApi.getBaublesHandler(player).getStackInSlot(slot);
-
-    IEnergyCapability capability = stack.getCapability(EnergyCapabilityProvider.ENERGY_CAPABILITY, null);
-    if(capability == null){
-      return;
-    }
-
-    if(capability.getEnergyAmount() <= 0){
-      return;
-    }
-
-    capability.removeEnergy(amount);
-    PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(true, slot, stack, capability.getData()));
-  }
-
-  public static void removeEnergyFromBaubleItem(ItemStack stack, float amount){
-    IEnergyCapability capability = stack.getCapability(EnergyCapabilityProvider.ENERGY_CAPABILITY, null);
-    if(capability == null){
-      return;
-    }
-
-    if(capability.getEnergyAmount() <= 0){
-      return;
-    }
-
-    capability.removeEnergy(amount);
-    PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(true, -1, stack, capability.getData()));
-  }
-
-  public static void removeEnergyFromHeldItem(ItemStack stack, float amount, EnumHand hand){
-    IEnergyCapability capability = stack.getCapability(EnergyCapabilityProvider.ENERGY_CAPABILITY, null);
-    if(capability == null){
-      return;
-    }
-
-    if(capability.getEnergyAmount() <= 0){
-      return;
-    }
-
-    capability.removeEnergy(amount);
-    if(hand == EnumHand.MAIN_HAND){
-      PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(false, -1, stack, capability.getData()));
-    }
-    else{
-      PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(false, -2, stack, capability.getData()));
-    }
-
-  }
+//  public static void removeEnergyFromBaubleItem(PlayerEntity player, int slot, float amount){
+//    ItemStack stack = BaublesApi.getBaublesHandler(player).getStackInSlot(slot);
+//
+//    IEnergyCapability capability = stack.getCapability(EnergyCapabilityProvider.ENERGY_CAPABILITY, null);
+//    if(capability == null){
+//      return;
+//    }
+//
+//    if(capability.getEnergyAmount() <= 0){
+//      return;
+//    }
+//
+//    capability.removeEnergy(amount);
+//    PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(true, slot, stack, capability.getData()));
+//  }
+//
+//  public static void removeEnergyFromBaubleItem(ItemStack stack, float amount){
+//    IEnergyCapability capability = stack.getCapability(EnergyCapabilityProvider.ENERGY_CAPABILITY, null);
+//    if(capability == null){
+//      return;
+//    }
+//
+//    if(capability.getEnergyAmount() <= 0){
+//      return;
+//    }
+//
+//    capability.removeEnergy(amount);
+//    PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(true, -1, stack, capability.getData()));
+//  }
+//
+//  public static void removeEnergyFromHeldItem(ItemStack stack, float amount, EnumHand hand){
+//    IEnergyCapability capability = stack.getCapability(EnergyCapabilityProvider.ENERGY_CAPABILITY, null);
+//    if(capability == null){
+//      return;
+//    }
+//
+//    if(capability.getEnergyAmount() <= 0){
+//      return;
+//    }
+//
+//    capability.removeEnergy(amount);
+//    if(hand == EnumHand.MAIN_HAND){
+//      PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(false, -1, stack, capability.getData()));
+//    }
+//    else{
+//      PacketHandler.INSTANCE.sendToAll(new EnergyCapabilityMessage(false, -2, stack, capability.getData()));
+//    }
+//
+//  }
 
 }
