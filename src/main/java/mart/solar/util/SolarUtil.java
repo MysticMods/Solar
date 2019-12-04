@@ -1,17 +1,46 @@
 package mart.solar.util;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
+import mart.solar.Solar;
+import mart.solar.energy.IEnergyEnum;
+import net.minecraft.block.Block;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SolarUtil {
 
- // public static Map<IEnergyEnum, Item> elementRunes = new HashMap<>();
-  //public static List<Item> runes = new ArrayList<>();
+    public static Map<Block, IEnergyEnum> getElementalAllBlocksAsMap(){
+        Map<Block, IEnergyEnum> elementalBlocks = new HashMap<>();
+        for(IEnergyEnum energy : Solar.ENERGY.getEnergies().values()){
+            for(Block block : BlockTags.getCollection().get(new ResourceLocation("solar", "energy/" + energy.getName())).getAllElements()){
+                elementalBlocks.put(block, energy);
+            }
+        }
+        return elementalBlocks;
+    }
 
-  public static void init(){
+    public static List<Block> getElementalAllBlocks(){
+        List<Block> elementalBlocks = new ArrayList<>();
+        for(IEnergyEnum energy : Solar.ENERGY.getEnergies().values()){
+            elementalBlocks.addAll(BlockTags.getCollection().get(new ResourceLocation("solar", "energy/" + energy.getName())).getAllElements());
+        }
+        return elementalBlocks;
+    }
+
+
+
+
+
+
+    // public static Map<IEnergyEnum, Item> elementRunes = new HashMap<>();
+    //public static List<Item> runes = new ArrayList<>();
+
+    public static void init(){
 
 //
 //    for(ItemStack stack : OreDictionary.getOres("oreSilver")){
@@ -40,7 +69,7 @@ public class SolarUtil {
 //    runes.add(ModItems.time_rune);
 //    runes.add(ModItems.sun_rune);
 //    runes.add(ModItems.moon_rune);
-  }
+    }
 
 //  @Nonnull
 //  public static IEnergyEnum getTypeFromRune(Item item) {
@@ -52,28 +81,12 @@ public class SolarUtil {
 //    return EnumEnergy.SOLAR;
 //  }
 
-  public static boolean addStackToInventory(int slot, ItemStackHandler inventory, ItemStack heldItem, PlayerEntity player, Hand hand){
-    if (inventory.getStackInSlot(slot).isEmpty()) {
-      ItemStack insertStack = heldItem.copy();
-      insertStack.setCount(1);
-      ItemStack attemptedInsert = inventory.insertItem(slot, insertStack, true);
-      if (attemptedInsert.isEmpty()) {
-        inventory.insertItem(slot, insertStack, false);
-        player.getHeldItem(hand).shrink(1);
-        if (player.getHeldItem(hand).getCount() == 0) {
-          player.setHeldItem(hand, ItemStack.EMPTY);
-        }
-        return true;
-      }
+
+    public static boolean isDay(World world) {
+        long dayTime = world.getGameTime() % 24000;
+
+        return dayTime < 12566 || dayTime > 23450;
     }
-    return false;
-  }
-
-  public static boolean isDay(World world) {
-    long dayTime = world.getGameTime() % 24000;
-
-    return dayTime < 12566 || dayTime > 23450;
-  }
 
 //  public static void removeEnergyFromBaubleItem(PlayerEntity player, int slot, float amount){
 //    ItemStack stack = BaublesApi.getBaublesHandler(player).getStackInSlot(slot);

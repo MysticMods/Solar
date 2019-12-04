@@ -14,10 +14,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod("solar")
 public class Solar {
   public static final String MODID = "solar";
-  public static final String DOMAIN = "solar";
-  public static final String NAME = "Solar";
-  public static final String VERSION = "@VERSION@";
-
 
   public static ItemGroup GROUP = new ItemGroup(Solar.MODID) {
     @Override
@@ -27,7 +23,7 @@ public class Solar {
   };
 
   public static ModRegistry REGISTRY = new ModRegistry(MODID);
-  public static ModSetup setup = new ModSetup();
+  private static ModSetup setup = new ModSetup();
   public static ModEnergies ENERGY = new ModEnergies();
 
   public Solar(){

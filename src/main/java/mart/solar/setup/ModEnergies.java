@@ -30,4 +30,7 @@ public class ModEnergies {
         return energies.getOrDefault(s, EnergyEnum.NONE);
     }
 
+    public Map<String, IEnergyEnum> getEnergies() {
+        return energies;
+    }
 }
