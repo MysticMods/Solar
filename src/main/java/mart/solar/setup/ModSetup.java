@@ -9,7 +9,6 @@ public class ModSetup {
     public void preInit(FMLCommonSetupEvent event) {
 //        CapabilityManager.INSTANCE.register(IEnergyCapability.class, new EnergyCapabilityStorage(), EnergyCapability::new);
 //
-//        MinecraftForge.EVENT_BUS.register(new RegistryManager());
 //        MinecraftForge.EVENT_BUS.register(new SolarEvents());
 //
 //        SolarUtil.init();

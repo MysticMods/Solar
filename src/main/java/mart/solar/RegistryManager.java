@@ -1,6 +1,44 @@
 package mart.solar;
 
+import mart.solar.setup.ModBlocks;
+import mart.solar.tile.ITile;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+@Mod.EventBusSubscriber(modid = Solar.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RegistryManager {
+
+    private static List<Block> blocks = new ArrayList<>();
+
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        blocks.add(ModBlocks.ALTAR_BASE.get());
+
+    }
+
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+    }
+
+    @SubscribeEvent
+    public static void onTileRegistry(final RegistryEvent.Register<TileEntityType<?>> event){
+        for(Block block : blocks){
+            if(block instanceof ITile){
+                event.getRegistry().register((TileEntityType<?>) TileEntityType.Builder.create(((ITile) block).getTile(), block).build(null)
+                        .setRegistryName(new ResourceLocation(Solar.MODID, Objects.requireNonNull(block.getRegistryName()).getPath() + "_tile")));
+                System.out.println("REGISTERINGNGNG");
+            }
+        }
+    }
 
 //  @SubscribeEvent
 //  public void init(@Nonnull RegisterContentEvent event) {

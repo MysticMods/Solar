@@ -8,21 +8,11 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class SolarUtil {
 
-  //public static Map<Block, IEnergyEnum> elementBlocks = new HashMap<>();
  // public static Map<IEnergyEnum, Item> elementRunes = new HashMap<>();
   //public static List<Item> runes = new ArrayList<>();
 
   public static void init(){
-    //Element blocks
-//    elementBlocks.put(Blocks.STONE,       EnumEnergy.EARTH);
-//    elementBlocks.put(Blocks.LAVA,        EnumEnergy.FIRE);
-//    elementBlocks.put(Blocks.WATER,       EnumEnergy.WATER);
-//    elementBlocks.put(Blocks.TALL_GRASS,   EnumEnergy.WIND);
-//    elementBlocks.put(Blocks.WHEAT,       EnumEnergy.LIFE);
-//    elementBlocks.put(Blocks.DIAMOND_ORE, EnumEnergy.TIME);
-//    elementBlocks.put(Blocks.COAL_ORE,    EnumEnergy.TIME);
-//    elementBlocks.put(Blocks.COAL_BLOCK,  EnumEnergy.TIME);
-//    elementBlocks.put(Blocks.GOLD_ORE,    EnumEnergy.SOLAR);
+
 //
 //    for(ItemStack stack : OreDictionary.getOres("oreSilver")){
 //      if(stack.getItem() instanceof ItemBlock){
