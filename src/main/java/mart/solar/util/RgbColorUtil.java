@@ -1,14 +1,8 @@
 package mart.solar.util;
 
-import mart.solar.enums.EnumEnergy;
-import mart.solar.enums.IEnergyEnum;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class RgbColorUtil {
 
-  private static Map<IEnergyEnum, RgbColor> colorMap = new HashMap<>();
+  //private static Map<IEnergyEnum, RgbColor> colorMap = new HashMap<>();
 
   public static RgbColor FIRE = new RgbColor(255, 103, 16);
   public static RgbColor WATER = new RgbColor(32, 188, 255);
@@ -21,21 +15,21 @@ public class RgbColorUtil {
 
 
   public static void init(){
-    colorMap.put(EnumEnergy.FIRE, FIRE);
-    colorMap.put(EnumEnergy.WATER, WATER);
-    colorMap.put(EnumEnergy.EARTH, EARTH);
-    colorMap.put(EnumEnergy.WIND, WIND);
-    colorMap.put(EnumEnergy.TIME, TIME);
-    colorMap.put(EnumEnergy.LIFE, LIFE);
-    colorMap.put(EnumEnergy.SOLAR, SOLAR);
-    colorMap.put(EnumEnergy.LUNAR, LUNAR);
+//    colorMap.put(EnumEnergy.FIRE, FIRE);
+//    colorMap.put(EnumEnergy.WATER, WATER);
+//    colorMap.put(EnumEnergy.EARTH, EARTH);
+//    colorMap.put(EnumEnergy.WIND, WIND);
+//    colorMap.put(EnumEnergy.TIME, TIME);
+//    colorMap.put(EnumEnergy.LIFE, LIFE);
+//    colorMap.put(EnumEnergy.SOLAR, SOLAR);
+//    colorMap.put(EnumEnergy.LUNAR, LUNAR);
   }
 
-  public static RgbColor getRuneColor(EnumEnergy type) {
-    return colorMap.get(type);
-  }
-
-  public static RgbColor getRuneColor(IEnergyEnum type) {
-    return colorMap.get(type);
-  }
+//  public static RgbColor getRuneColor(EnumEnergy type) {
+//    return colorMap.get(type);
+//  }
+//
+//  public static RgbColor getRuneColor(IEnergyEnum type) {
+//    return colorMap.get(type);
+//  }
 }
