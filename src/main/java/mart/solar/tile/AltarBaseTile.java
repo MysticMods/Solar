@@ -1,7 +1,11 @@
 package mart.solar.tile;
 
+import epicsquid.mysticallib.MysticalLib;
+import epicsquid.mysticallib.particle.ParticleRenderer;
+import epicsquid.mysticallib.setup.ClientProxy;
 import epicsquid.mysticallib.util.Util;
 import mart.solar.energy.IEnergyEnum;
+import mart.solar.setup.ModParticles;
 import mart.solar.setup.ModTiles;
 import mart.solar.util.SolarUtil;
 import net.minecraft.block.Block;
@@ -33,7 +37,6 @@ import java.util.Map;
 public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
 
     private Map<IEnergyEnum, BlockPos> elementBlocks = null;
-    private Map.Entry<IEnergyEnum, BlockPos> currentEntry = null;
     private int runTicks = 0;
 
     private LazyOptional<ItemStackHandler> handler = LazyOptional.of(this::createItemstackHandler);
@@ -122,19 +125,19 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
                     elementBlocks = new HashMap<>();
                 }
 
-                Map<Block, IEnergyEnum> elementalBlocks = SolarUtil.getElementalAllBlocksAsMap();
+                Map<Block, IEnergyEnum> blockEnergyMap = SolarUtil.getElementalAllBlocksAsMap();
                 for (int x = -3; x < 4; x++) {
                     for (int y = -1; y < 2; y++) {
                         for (int z = -3; z < 4; z++) {
                             Block b = world.getBlockState(pos.add(x, y, z)).getBlock();
-                            if(elementalBlocks.containsKey(b)){
-                                this.elementBlocks.put(elementalBlocks.get(b), pos.add(x, y, z));
+                            if(blockEnergyMap.containsKey(b)){
+                                this.elementBlocks.put(blockEnergyMap.get(b), pos.add(x, y, z));
                             }
                         }
                     }
                 }
 
-                if (elementalBlocks.size() != 8) {
+                if (elementBlocks.size() != 8) {
                     this.elementBlocks = null;
                 }
             });
@@ -145,24 +148,28 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
     @Override
     public void tick() {
         if (this.elementBlocks != null) {
-            System.out.println("Done well");
             //For each block spawn nice particles like the old times
             if(world.isRemote){
-                BlockPos beginPos = this.currentEntry.getValue();
-                //RgbColor rgbColor = RgbColorUtil.getRuneColor(this.currentEntry.getKey());
-                for(int i = 0; i < 6; i++){
-                    float randX = Util.rand.nextFloat() -0.5f;
-                    float randY = Util.rand.nextFloat() -0.5f;
-                    float randZ = Util.rand.nextFloat() -0.5f;
-//                    ParticleUtil.spawnParticleSolarLine(world,
-//                            beginPos.getX() + 0.5f + randX,beginPos.getY() + 0.5f + randY,beginPos.getZ() + 0.5f + randZ,
-//                            getPos().getX()+0.5f, getPos().getY()+0.5f, getPos().getZ()+0.5f,
-//                            rgbColor.getRed(), rgbColor.getGreen(), rgbColor.getBlue(), 1, 2, 100);
+
+                for (Map.Entry<IEnergyEnum, BlockPos> entry : this.elementBlocks.entrySet()){
+                    BlockPos beginPos = entry.getValue();
+                    for(int i = 0; i < 6; i++){
+                        float randX = Util.rand.nextFloat() -0.5f;
+                        float randY = Util.rand.nextFloat() -0.5f;
+                        float randZ = Util.rand.nextFloat() -0.5f;
+
+//                        ClientProxy.particleRenderer.spawnParticle(world, ModParticles.PARTICLE_SOLAR_LINE, beginPos.getX() + 0.5f + randX,beginPos.getY() + 0.5f + randY,beginPos.getZ() + 0.5f + randZ,
+//                                getPos().getX()+0.5f, getPos().getY()+0.5f, getPos().getZ()+0.5f,
+//                                255, 160, 180, 1, 2, 0.2);
+                    }
                 }
+
+                //RgbColor rgbColor = RgbColorUtil.getRuneColor(this.currentEntry.getKey());
+
 
             }
 
-            if(runTicks >= 20){
+            if(runTicks >= 8 * 40){
                 for(Map.Entry<IEnergyEnum, BlockPos> pos : elementBlocks.entrySet()){
                     world.setBlockState(pos.getValue(), Blocks.AIR.getDefaultState());
                 }

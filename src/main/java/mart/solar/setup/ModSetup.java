@@ -17,6 +17,8 @@ public class ModSetup {
 //
 //        RitualRegistry.init();
 //        EnergyRegistry.init();
+
+        ModParticles.init();
     }
 
     public void gatherData (GatherDataEvent event) {

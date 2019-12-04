@@ -3,21 +3,27 @@ package mart.solar.tile.render;
 import com.mojang.blaze3d.platform.GlStateManager;
 import mart.solar.tile.AltarBaseTile;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 public class TileEntityAltarBaseRenderer extends TileEntityRenderer<AltarBaseTile> {
+
+   private ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
 
     @Override
     public void render(AltarBaseTile te, double x, double y, double z, float partialTicks, int destroyStage) {
         te.getHandler().ifPresent(inventory ->{
             if(!inventory.getStackInSlot(0).isEmpty()){
-                System.out.println(inventory.getStackInSlot(0));
                 GlStateManager.pushMatrix();
-                ItemEntity item = new ItemEntity(Minecraft.getInstance().world, x, y, z, inventory.getStackInSlot(0));
-                GlStateManager.translatef((float)x + 0.0f, (float)y + 0.8125f, (float)z + 0.0f);
-                //GlStateManager.rotatef(180, 0.0F, 1.0F, 1);
-                Minecraft.getInstance().getRenderManager().renderEntity(item, 0, 0, 0, 0, 0, true);
+                GlStateManager.translatef((float)x + 0.5f, (float)y + 0.8125f, (float)z + 0.25f);
+                GlStateManager.rotatef(180, 0.0F, 1.0F, 1);
+                GlStateManager.scalef(0.5f, 0.5f, 0.5f);
+                renderer.renderItem(inventory.getStackInSlot(0), ItemCameraTransforms.TransformType.FIXED);
                 GlStateManager.popMatrix();
             }
         });
@@ -25,10 +31,10 @@ public class TileEntityAltarBaseRenderer extends TileEntityRenderer<AltarBaseTil
         te.getHandler().ifPresent(inventory ->{
             if(!inventory.getStackInSlot(1).isEmpty()){
                 GlStateManager.pushMatrix();
-                ItemEntity item = new ItemEntity(Minecraft.getInstance().world, x, y, z, inventory.getStackInSlot(1));
-                GlStateManager.translatef((float)x + 0.5f, (float)y + 0.8125f, (float)z + 0.2f);
-                //GlStateManager.rotatef(180, 0.0F, 1.0F, 1);
-                Minecraft.getInstance().getRenderManager().renderEntity(item, 0, 0, 0, 0, 0, true);
+                GlStateManager.translatef((float)x + 0.5f, (float)y + 0.8125f, (float)z + 0.75f);
+                GlStateManager.rotatef(180, 0.0F, 1.0F, 1);
+                GlStateManager.scalef(0.5f, 0.5f, 0.5f);
+                renderer.renderItem(inventory.getStackInSlot(1), ItemCameraTransforms.TransformType.FIXED);
                 GlStateManager.popMatrix();
             }
         });

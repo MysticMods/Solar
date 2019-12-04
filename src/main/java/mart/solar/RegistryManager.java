@@ -3,7 +3,9 @@ package mart.solar;
 import mart.solar.setup.ModBlocks;
 import mart.solar.tile.ITile;
 import net.minecraft.block.Block;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.item.Item;
+import net.minecraft.particles.ParticleType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -38,6 +40,10 @@ public class RegistryManager {
                 System.out.println("REGISTERINGNGNG");
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void registerParticle(RegistryEvent.Register<ParticleType<?>> event) {
     }
 
 //  @SubscribeEvent

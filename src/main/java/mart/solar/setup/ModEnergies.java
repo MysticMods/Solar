@@ -19,7 +19,6 @@ public class ModEnergies {
         register(EnergyEnum.WIND);
         register(EnergyEnum.TIME);
         register(EnergyEnum.LIFE);
-        register(EnergyEnum.NONE);
     }
 
     public void register(IEnergyEnum energyEnum){
