@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "builtin/generated",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "type": {
+      "gold": {
+        "textures": {
+          "layer0": "solar:items/infused_gold"
+        }
+      },
+      "silver": {
+        "textures": {
+          "layer0": "solar:items/infused_silver"
+        }
+      }
+    }
+  }
+}

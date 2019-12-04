@@ -1,0 +1,12 @@
+[{
+  "modid": "solar",
+  "name": "Solar",
+  "description": "A story of ancient power",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "logoFile": "",
+  "url": "http://www.reddit.com/solarmod/",
+  "updateJSON": "",
+  "authorList": ["Martacus"],
+  "credits": "Thanks to Thexare for his awesome ideas. Thanks to notawallplan for his textures. And thanks onewithtehforce for testing the mod."
+}]

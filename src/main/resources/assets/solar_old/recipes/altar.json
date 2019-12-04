@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WEW",
+    "WWW"  ],
+  "key": {
+    "E": [
+      {
+        "item": "solar:energy_core",
+        "data": 0
+      }
+    ],
+    "W": [
+      {
+        "item": "solar:sunburnt",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:altar",
+    "data": 0
+  }
+}

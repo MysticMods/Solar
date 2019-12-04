@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "0": "solar:blocks/menhir",
+      "layer0": "solar:blocks/menhir",
+      "particle": "solar:blocks/menhir"
+    }
+  },
+  "variants": {
+    "part=middle": {
+      "model": "solar:menhir"
+    },
+    "part=top": {
+      "model": "solar:menhir"
+    },
+    "part=base": {
+      "model": "solar:menhir"
+    }
+  }
+}

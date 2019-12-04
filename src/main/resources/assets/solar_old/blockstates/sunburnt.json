@@ -1,0 +1,103 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": { },
+    "model": "cube_all"
+  },
+  "variants": {
+    "type": {
+      "raw": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_raw"
+        }
+      },
+      "paved": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "engraved": {
+        "textures": {
+          "all": "solar:blocks/sunburnt/sunburnt_engraved"
+        }
+      },
+      "arched_1": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_arched1",
+          "south": "solar:blocks/sunburnt/sunburnt_arched1",
+          "east": "solar:blocks/sunburnt/sunburnt_arched1",
+          "west": "solar:blocks/sunburnt/sunburnt_arched1",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "arched_2": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_arched2",
+          "south": "solar:blocks/sunburnt/sunburnt_arched2",
+          "east": "solar:blocks/sunburnt/sunburnt_arched2",
+          "west": "solar:blocks/sunburnt/sunburnt_arched2",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "arched_3": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_arched3",
+          "south": "solar:blocks/sunburnt/sunburnt_arched3",
+          "east": "solar:blocks/sunburnt/sunburnt_arched3",
+          "west": "solar:blocks/sunburnt/sunburnt_arched3",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "arched_4": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_arched4",
+          "south": "solar:blocks/sunburnt/sunburnt_arched4",
+          "east": "solar:blocks/sunburnt/sunburnt_arched4",
+          "west": "solar:blocks/sunburnt/sunburnt_arched4",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "arched_5": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_arched5",
+          "south": "solar:blocks/sunburnt/sunburnt_arched5",
+          "east": "solar:blocks/sunburnt/sunburnt_arched5",
+          "west": "solar:blocks/sunburnt/sunburnt_arched5",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "oxidised_endorsed": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_oxidised_endorsed",
+          "south": "solar:blocks/sunburnt/sunburnt_oxidised_endorsed",
+          "east": "solar:blocks/sunburnt/sunburnt_oxidised_endorsed",
+          "west": "solar:blocks/sunburnt/sunburnt_oxidised_endorsed",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      },
+      "diamond_endorsed": {
+        "textures": {
+          "up": "solar:blocks/sunburnt/sunburnt_paved",
+          "down": "solar:blocks/sunburnt/sunburnt_paved",
+          "north": "solar:blocks/sunburnt/sunburnt_diamond_endorsed",
+          "south": "solar:blocks/sunburnt/sunburnt_diamond_endorsed",
+          "east": "solar:blocks/sunburnt/sunburnt_diamond_endorsed",
+          "west": "solar:blocks/sunburnt/sunburnt_diamond_endorsed",
+          "particle": "solar:blocks/sunburnt/sunburnt_paved"
+        }
+      }
+    }
+  }
+}

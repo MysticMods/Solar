@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WSW",
+    "S S",
+    "WSW"  ],
+  "key": {
+    "S": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "ingotSilver"
+      }
+    ],
+    "W": [
+      {
+        "item": "minecraft:iron_ingot",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:lunar_focus",
+    "data": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WCW",
+    "WWW"  ],
+  "key": {
+    "C": [
+      {
+        "item": "minecraft:clock",
+        "data": 0
+      }
+    ],
+    "W": [
+      {
+        "item": "solar:sunburnt",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:sundial",
+    "data": 0
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "altar_start": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "solar:altar_start",
+        "stream": false
+      }
+    ]
+  },
+  "spell_activated": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "solar:spell_activated",
+        "stream": false
+      }
+    ]
+  },
+  "altar_finish": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "solar:altar_finish",
+        "stream": false
+      }
+    ]
+  },
+  "altar_finish_2": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "solar:altar_finish_2",
+        "stream": false
+      }
+    ]
+  },
+  "altar_active_tier_1": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "solar:altar_active_tier_1",
+        "stream": false
+      }
+    ]
+  },
+  "altar_shoot_energy": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "solar:altar_shoot_energy",
+        "stream": false
+      }
+    ]
+  }
+}

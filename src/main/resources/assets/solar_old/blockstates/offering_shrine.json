@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "solar:blocks/offering_shrine"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "solar:offering_shrine"
+    },
+    "inventory": {
+      "model": "solar:offering_shrine"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"  ],
+  "key": {
+    "S": [
+      {
+        "item": "solar:sunburnt",
+        "data": 1
+      }
+    ],
+    "C": [
+      {
+        "item": "solar:energy_core",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:spell_anchor",
+    "data": 0
+  }
+}

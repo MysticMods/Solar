@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "normal": {
+      "model": "solar:energy_relay"
+    },
+    "inventory": {
+      "model": "solar:energy_relay"
+    }
+  }
+}

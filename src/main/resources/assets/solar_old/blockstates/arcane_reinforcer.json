@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "normal": {
+      "model": "solar:arcane_reinforcer"
+    },
+    "inventory": {
+      "model": "solar:arcane_reinforcer"
+    }
+  }
+}

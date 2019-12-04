@@ -1,0 +1,50 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "mysticalworld:blocks/solar_infused_stone",
+		"particle": "mysticalworld:blocks/solar_infused_stone"
+	},
+	"elements": [
+		{
+			"name": "cube",
+			"from": [2, -0.1, 2],
+			"to": [14, 15.9, 14],
+			"faces": {
+				"north": {"uv": [1, 0, 15, 14], "texture": "#0"},
+				"east": {"uv": [1, 0, 15, 14], "texture": "#0"},
+				"south": {"uv": [1, 0, 15, 14], "texture": "#0"},
+				"west": {"uv": [1, 0, 15, 14], "texture": "#0"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#0"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"gui": {
+			"scale": [0.5, 0.5, 0.5],
+			"rotation": [17, 151, 0]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5],
+			"translation": [0, 1, 0],
+			"rotation": [-13, 0, 0]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5],
+			"translation": [0, 1, 0],
+			"rotation": [-13, 0, 0]
+		},
+		"head": {
+			"scale": [1.525, 1.525, 1.525]
+		},
+		"ground": {
+			"scale": [0.4, 0.4, 0.4]
+		}
+	}
+}

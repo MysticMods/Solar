@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"  ],
+  "key": {
+    "S": [
+      {
+        "item": "solar:sunburnt",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:sunburnt",
+    "data": 1,
+    "count": 4
+  }
+}

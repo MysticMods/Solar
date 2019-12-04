@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "solar:blocks/flower/flower_fiery"
+  }
+}

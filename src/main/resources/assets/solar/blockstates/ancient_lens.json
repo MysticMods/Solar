@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  },
+  "variants": {
+    "normal": {
+      "model": "solar:ancient_lens"
+    },
+    "inventory": {
+      "model": "solar:ancient_lens"
+    }
+  }
+}

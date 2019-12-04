@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "GLG",
+    "SFS"  ],
+  "key": {
+    "G": [
+      {
+        "item": "minecraft:gold_ingot",
+        "data": 0
+      }
+    ],
+    "S": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "ingotSilver"
+      }
+    ],
+    "W": [
+      {
+        "item": "solar:sunburnt",
+        "data": 0
+      }
+    ],
+    "L": [
+      {
+        "item": "solar:solar_focus",
+        "data": 0
+      }
+    ],
+    "F": [
+      {
+        "item": "solar:lunar_focus",
+        "data": 0
+      }
+     ]
+  },
+  "result": {
+    "item": "solar:rune_infuser_bottom",
+    "data": 0
+  }
+}

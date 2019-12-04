@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+    "GSG",
+    " G "  ],
+  "key": {
+    "G": [
+      {
+        "type": "forge:ore_dict",
+        "ore": "nuggetGold"
+      }
+    ],
+    "S": [
+      {
+        "item": "mysticalworld:solar_infused_stone",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:solar_ring",
+    "data": 0
+  }
+}

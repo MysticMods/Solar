@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": { }
+  },
+  "variants": {
+    "type": {
+      "base": {
+        "model": "solar:ancientmenhir/am_bottom"
+      },
+      "pillar": {
+        "model": "solar:ancientmenhir/am_pillar"
+      },
+      "top": {
+        "model": "solar:ancientmenhir/am_top"
+      }
+    }
+  }
+}

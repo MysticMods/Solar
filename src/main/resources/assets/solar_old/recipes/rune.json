@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": [
+      {
+        "item": "solar:sunburnt",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:runes",
+    "data": 0,
+    "count": 2
+  }
+}

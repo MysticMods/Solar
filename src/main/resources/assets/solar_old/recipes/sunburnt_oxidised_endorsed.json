@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SES",
+    "SSS"],
+  "key": {
+    "S": [
+      {
+        "item": "solar:sunburnt",
+        "data": 1
+      }
+    ],
+    "E": [
+      {
+        "item": "minecraft:emerald",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:sunburnt",
+    "data": 8,
+    "count": 1
+  }
+}

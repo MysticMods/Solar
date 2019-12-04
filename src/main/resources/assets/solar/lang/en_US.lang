@@ -1,0 +1,51 @@
+# Tab
+
+itemGroup.solar=Solar
+
+# Blocks
+
+tile.altar.name=Celestial Altar
+tile.altar_base.name=Altar Base
+tile.ancient_lens.name=Ancient Lens
+tile.menhir.name=Menhir
+tile.sun_mine.name=Sun Mine
+tile.charging_pedestal.name=Charging Pedestal
+
+
+# Runes
+
+item.earth_rune.name=Earth Rune
+item.fire_rune.name=Fire Rune
+item.life_rune.name=Life Rune
+item.moon_rune.name=Moon Rune
+item.blank_rune.name=Rune
+item.sun_rune.name=Sun Rune
+item.time_rune.name=Time Rune
+item.water_rune.name=Water Rune
+item.wind_rune.name=Wind Rune
+item.celestial_hoe.name=Celestial Hoe
+
+
+# Items
+
+item.study_tools.name=Study Tools
+item.infused_gold.name=Infused Gold
+item.infused_silver.name=Infused Silver
+item.silver_boots.name=Silver Boots
+item.silver_leggings.name=Silver Leggings
+item.silver_chestplate.name=Silver Chestplate
+item.silver_helmet.name=Silver Helmet
+item.solar_ring.name=Solar Ring
+item.lunar_ring.name=Lunar Ring
+
+# Pendants
+
+item.pendant.name=Pendant
+item.pendant_solar.name=Solar Pendant
+item.pendant_lunar.name=Lunar Pendant
+item.pendant_fire.name=Fire Pendant
+item.pendant_water.name=Water Pendant
+item.pendant_earth.name=Earth Pendant
+item.pendant_wind.name=Wind Pendant
+item.pendant_time.name=Time Pendant
+item.pendant_life.name=Life Pendant

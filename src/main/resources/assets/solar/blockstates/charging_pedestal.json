@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  },
+  "variants": {
+    "normal": {
+      "model": "solar:charging_pedestal"
+    },
+    "inventory": {
+      "model": "solar:charging_pedestal"
+    }
+  }
+}

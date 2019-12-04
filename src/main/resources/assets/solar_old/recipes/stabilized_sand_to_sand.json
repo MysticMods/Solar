@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G"
+  ],
+  "key": {
+    "G": [
+      {
+        "item": "solar:stabilized_sand",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "minecraft:sand",
+    "data": 0,
+    "count": 1
+  }
+}

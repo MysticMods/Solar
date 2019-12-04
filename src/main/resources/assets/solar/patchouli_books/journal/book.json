@@ -1,0 +1,7 @@
+{
+  "name": "Journal",
+  "landing_text": "After studying the skies at day and night I feel like a journal will be helpful in recording my findings.",
+  "model": "solar:journal",
+  "version": 1,
+  "show_progress": false
+}

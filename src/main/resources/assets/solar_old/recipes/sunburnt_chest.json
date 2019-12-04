@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "SCS",
+    "SSS"  ],
+  "key": {
+    "G": [
+      {
+        "item": "minecraft:glass",
+        "data": 0
+      }
+    ],
+    "S": [
+      {
+        "item": "solar:sunburnt",
+        "data": 1
+      }
+    ],
+    "C": [
+      {
+        "item": "minecraft:chest",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:sunburnt_chest",
+    "data": 0
+  }
+}

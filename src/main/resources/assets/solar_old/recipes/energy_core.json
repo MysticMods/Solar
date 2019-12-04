@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GSG",
+    "S S",
+    "GSG"  ],
+  "key": {
+    "G": [
+      {
+        "item": "solar:infused_gold",
+        "data": 0
+      }
+    ],
+    "S": [
+      {
+        "item": "solar:infused_silver",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "solar:energy_core",
+    "data": 0
+  }
+}

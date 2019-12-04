@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  },
+  "variants": {
+    "facing=south": {
+      "model": "solar:sunburnt_chest"
+    },
+    "facing=north": {
+      "model": "solar:sunburnt_chest",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "solar:sunburnt_chest",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "solar:sunburnt_chest",
+      "y": 90
+    },
+    "inventory": {
+      "model": "solar:sunburnt_chest"
+    }
+  }
+}
