@@ -2,7 +2,7 @@ package mart.solar.tile;
 
 import epicsquid.mysticallib.util.Util;
 import mart.solar.energy.IEnergyEnum;
-import mart.solar.particle.EnergyParticleData;
+import mart.solar.particle.energy.EnergyParticleData;
 import mart.solar.setup.ModParticles;
 import mart.solar.setup.ModTiles;
 import mart.solar.util.RgbColor;

@@ -1,4 +1,4 @@
-package mart.solar.particle;
+package mart.solar.particle.energy;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -6,7 +6,6 @@ import mart.solar.setup.ModParticles;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleType;
-import net.minecraft.util.math.BlockPos;
 
 import javax.annotation.Nonnull;
 import java.util.Locale;

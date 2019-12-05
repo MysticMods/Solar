@@ -1,7 +1,7 @@
 package mart.solar.setup;
 
 import mart.solar.Solar;
-import mart.solar.particle.EnergyParticleType;
+import mart.solar.particle.energy.EnergyParticleType;
 import mart.solar.tile.AltarBaseTile;
 import mart.solar.tile.render.TileEntityAltarBaseRenderer;
 import net.minecraft.client.Minecraft;

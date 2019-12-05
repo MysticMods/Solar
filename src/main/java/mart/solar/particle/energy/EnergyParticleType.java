@@ -1,4 +1,4 @@
-package mart.solar.particle;
+package mart.solar.particle.energy;
 
 import mart.solar.Solar;
 import net.minecraft.client.particle.IParticleFactory;
