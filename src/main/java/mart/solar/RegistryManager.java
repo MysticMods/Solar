@@ -1,6 +1,9 @@
 package mart.solar;
 
+import epicsquid.mysticallib.particle.ParticleRegistry;
+import mart.solar.particle.EnergyParticleType;
 import mart.solar.setup.ModBlocks;
+import mart.solar.setup.ModParticles;
 import mart.solar.tile.ITile;
 import net.minecraft.block.Block;
 import net.minecraft.client.particle.Particle;
@@ -8,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -43,7 +47,8 @@ public class RegistryManager {
     }
 
     @SubscribeEvent
-    public static void registerParticle(RegistryEvent.Register<ParticleType<?>> event) {
+    public static void registerParticles(RegistryEvent.Register<ParticleType<?>> evt) {
+        evt.getRegistry().register(ModParticles.ENERGY);
     }
 
 //  @SubscribeEvent

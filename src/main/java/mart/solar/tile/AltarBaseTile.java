@@ -5,6 +5,8 @@ import epicsquid.mysticallib.particle.ParticleRenderer;
 import epicsquid.mysticallib.setup.ClientProxy;
 import epicsquid.mysticallib.util.Util;
 import mart.solar.energy.IEnergyEnum;
+import mart.solar.particle.EnergyParticle;
+import mart.solar.particle.EnergyParticleData;
 import mart.solar.setup.ModParticles;
 import mart.solar.setup.ModTiles;
 import mart.solar.util.SolarUtil;
@@ -157,6 +159,13 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
                         float randX = Util.rand.nextFloat() -0.5f;
                         float randY = Util.rand.nextFloat() -0.5f;
                         float randZ = Util.rand.nextFloat() -0.5f;
+                        if(ModParticles.ENERGY != null){
+                            EnergyParticleData data = new EnergyParticleData(1, 150,150, 140);
+                            world.addParticle(data, false, beginPos.getX() + 0.5f + randX,beginPos.getY() + 1.5f + randY,beginPos.getZ() + 0.5f + randZ, 0, 0, 0);
+                        }
+                        else{
+                            System.out.println("AAAAAAAAAAAAH");
+                        }
 
 //                        ClientProxy.particleRenderer.spawnParticle(world, ModParticles.PARTICLE_SOLAR_LINE, beginPos.getX() + 0.5f + randX,beginPos.getY() + 0.5f + randY,beginPos.getZ() + 0.5f + randZ,
 //                                getPos().getX()+0.5f, getPos().getY()+0.5f, getPos().getZ()+0.5f,

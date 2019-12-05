@@ -1,12 +1,11 @@
 package mart.solar.setup;
 
 import mart.solar.Solar;
+import mart.solar.particle.EnergyParticleType;
 import net.minecraftforge.registries.ObjectHolder;
 
 @ObjectHolder(Solar.MODID)
 public class ModParticles {
 
-
-    public static void init() {
-            }
+    public static EnergyParticleType ENERGY = new EnergyParticleType();
 }
