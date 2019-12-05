@@ -1,5 +1,6 @@
 package mart.solar.setup;
 
+import mart.solar.util.RgbColorUtil;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
@@ -12,7 +13,7 @@ public class ModSetup {
 //        MinecraftForge.EVENT_BUS.register(new SolarEvents());
 //
 //        SolarUtil.init();
-//        RgbColorUtil.init();
+        RgbColorUtil.init();
 //        AltarCraftingRecipeRegistry.init();
 //
 //        RitualRegistry.init();
