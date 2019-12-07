@@ -14,7 +14,6 @@ public class EnergyParticleType extends ParticleType<EnergyParticleData> {
     public EnergyParticleType() {
         super(false, EnergyParticleData.DESERIALIZER);
         setRegistryName(new ResourceLocation(Solar.MODID, "energy"));
-        System.out.println(getRegistryName());
     }
 
 

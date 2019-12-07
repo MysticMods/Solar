@@ -1,5 +1,6 @@
 package mart.solar.block;
 
+import epicsquid.mysticallib.util.Util;
 import mart.solar.tile.AltarBaseTile;
 import mart.solar.tile.ITile;
 import net.minecraft.block.Block;
@@ -62,5 +63,13 @@ public class AltarBaseBlock extends Block implements ITile {
     @Override
     public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
         return SHAPE;
+    }
+
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        AltarBaseTile tile = (AltarBaseTile)worldIn.getTileEntity(pos);
+        tile.getHandler().ifPresent(handler -> Util.spawnInventoryInWorld(worldIn, pos.getX(), pos.getY(), pos.getZ(), handler));
+
+        super.onReplaced(state, worldIn, pos, newState, isMoving);
     }
 }

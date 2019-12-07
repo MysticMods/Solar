@@ -38,7 +38,6 @@ public class RegistryManager {
             if(block instanceof ITile){
                 event.getRegistry().register((TileEntityType<?>) TileEntityType.Builder.create(((ITile) block).getTile(), block).build(null)
                         .setRegistryName(new ResourceLocation(Solar.MODID, Objects.requireNonNull(block.getRegistryName()).getPath() + "_tile")));
-                System.out.println("REGISTERINGNGNG");
             }
         }
     }
@@ -68,11 +67,6 @@ public class RegistryManager {
 //    ModRecipes.initRecipes(event);
 //  }
 //
-//  @SideOnly(Side.CLIENT)
-//  @SubscribeEvent
-//  public void onRegisterCustomModels(@Nonnull RegisterParticleEvent event) {
-//    ModParticles.init();
-//  }
 //
 //  @SubscribeEvent(priority = EventPriority.LOWEST)
 //  public void registerOredict(@Nonnull RegistryEvent.Register<Item> event) {

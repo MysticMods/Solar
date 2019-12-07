@@ -3,7 +3,9 @@ package mart.solar.setup;
 import mart.solar.Solar;
 import mart.solar.particle.energy.EnergyParticleType;
 import mart.solar.tile.AltarBaseTile;
-import mart.solar.tile.render.TileEntityAltarBaseRenderer;
+import mart.solar.tile.AltarTile;
+import mart.solar.tile.render.AltarBaseRenderer;
+import mart.solar.tile.render.AltarRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
@@ -18,9 +20,8 @@ public class ClientRegistryEvents
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event)
     {
-        ClientRegistry.bindTileEntitySpecialRenderer(AltarBaseTile.class, new TileEntityAltarBaseRenderer());
-//        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new TileEntityAltarRenderer());
-//        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChargingPedestal.class, new TileEntityChargingPedestalRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(AltarBaseTile.class, new AltarBaseRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(AltarTile.class, new AltarRenderer());
     }
 
     @SubscribeEvent

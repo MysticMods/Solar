@@ -3,6 +3,7 @@ package mart.solar.tile;
 import epicsquid.mysticallib.util.Util;
 import mart.solar.energy.IEnergyEnum;
 import mart.solar.particle.energy.EnergyParticleData;
+import mart.solar.setup.ModBlocks;
 import mart.solar.setup.ModParticles;
 import mart.solar.setup.ModTiles;
 import mart.solar.util.RgbColor;
@@ -15,11 +16,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -30,11 +28,10 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
+public class AltarBaseTile  extends TileBase implements ITickableTileEntity {
 
     private Map<IEnergyEnum, BlockPos> elementBlocks = null;
     private int runTicks = 0;
@@ -44,17 +41,19 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
     public AltarBaseTile() {
         super(ModTiles.ALTAR_BASE_TILE);
     }
+
     private ItemStackHandler createItemstackHandler() {
         return new ItemStackHandler(2) {
 
             @Override
             protected void onContentsChanged(int slot) {
                 markDirty();
+                BlockState state = world.getBlockState(pos);
+                world.notifyBlockUpdate(pos, state, state, 3);
             }
 
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                System.out.println("hits");
                 if (slot == 0 && stack.getItem() == Items.GOLD_INGOT) {
                     return true;
                 }
@@ -87,28 +86,23 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
         return super.write(tag);
     }
 
-    public void activate(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        ItemStack heldItem = player.getHeldItem(hand);
+    public LazyOptional<ItemStackHandler> getHandler() {
+        return handler;
+    }
 
-        if(!player.getHeldItem(hand).isEmpty()){
-            this.handler.ifPresent(handler -> {
-                ItemStack returnStack = handler.insertItem(0, player.getHeldItem(hand), false);
-                if(returnStack.getCount() == player.getHeldItem(hand).getCount()){
-                    returnStack = handler.insertItem(1, player.getHeldItem(hand), false);
-                }
-                player.setHeldItem(hand, returnStack);
-                return;
-            });
+    public void activate(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+        if(insertItemInHandler(handler, player, hand)){
+            return;
         }
 
         //if hand is empty retrieve the items.
-        if (heldItem.isEmpty() && !world.isRemote && hand == Hand.MAIN_HAND && !player.isSneaking() && this.elementBlocks == null) {
+        if (player.getHeldItem(hand).isEmpty() && !world.isRemote && hand == Hand.MAIN_HAND && !player.isSneaking() && this.elementBlocks == null) {
             handler.ifPresent(inventory -> {
                 for (int i = 1; i >= 0; i--) {
                     if (!inventory.getStackInSlot(i).isEmpty()) {
                         ItemStack extracted = inventory.extractItem(i, inventory.getStackInSlot(i).getCount(), false);
                         player.addItemStackToInventory(extracted);
-                        markDirty();
+
                         return;
                     }
                 }
@@ -148,9 +142,7 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
     @Override
     public void tick() {
         if (this.elementBlocks != null) {
-            //For each block spawn nice particles like the old times
             if(world.isRemote){
-
                 if(world.getGameTime() % 2 == 0){
                     for (Map.Entry<IEnergyEnum, BlockPos> entry : this.elementBlocks.entrySet()){
                         RgbColor rgbColor = RgbColorUtil.getEnergyColor(entry.getKey());
@@ -167,41 +159,31 @@ public class AltarBaseTile  extends TileEntity implements ITickableTileEntity {
                         }
                     }
                 }
+            }
 
-                //
-
-
+            for (Map.Entry<IEnergyEnum, BlockPos> entry : this.elementBlocks.entrySet()){
+                if (world.getBlockState(entry.getValue()) == Blocks.AIR.getDefaultState()) {
+                    runTicks = 0;
+                    elementBlocks = null;
+                }
             }
 
             if(runTicks >= 8 * 40){
                 for(Map.Entry<IEnergyEnum, BlockPos> pos : elementBlocks.entrySet()){
-                    world.setBlockState(pos.getValue(), Blocks.AIR.getDefaultState());
+                    world.setBlockState(pos.getValue(), Blocks.AIR.getDefaultState(), 1);
                 }
                 runTicks = 0;
                 elementBlocks = null;
+                handler.ifPresent(handler -> {
+                    handler.setStackInSlot(0, ItemStack.EMPTY);
+                    handler.setStackInSlot(1, ItemStack.EMPTY);
+                });
+                world.setBlockState(getPos(), ModBlocks.ALTAR.get().getDefaultState(), 1);
             }
 
             runTicks++;
         }
     }
 
-    public LazyOptional<ItemStackHandler> getHandler() {
-        return handler;
-    }
 
-    @Nullable
-    @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(this.pos, 9, getUpdateTag());
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        read(pkt.getNbtCompound());
-    }
-
-    @Override
-    public CompoundNBT getUpdateTag() {
-        return write(super.getUpdateTag());
-    }
 }

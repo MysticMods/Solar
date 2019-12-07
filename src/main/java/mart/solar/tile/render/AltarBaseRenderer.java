@@ -5,13 +5,9 @@ import mart.solar.tile.AltarBaseTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
-public class TileEntityAltarBaseRenderer extends TileEntityRenderer<AltarBaseTile> {
+public class AltarBaseRenderer extends TileEntityRenderer<AltarBaseTile> {
 
    private ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
 

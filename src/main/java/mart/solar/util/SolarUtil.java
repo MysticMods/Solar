@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +33,15 @@ public class SolarUtil {
         return elementalBlocks;
     }
 
+    public static int getFilledSlots(IItemHandler handler){
+        int filled = 0;
+        for(int i = 0; i < handler.getSlots(); i++){
+            if(!handler.getStackInSlot(i).isEmpty()){
+                filled++;
+            }
+        }
+        return filled;
+    }
 
 
 
