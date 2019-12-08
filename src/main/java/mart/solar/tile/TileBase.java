@@ -49,7 +49,7 @@ public class TileBase extends TileEntity {
      */
     public boolean insertItemInHandler(LazyOptional<ItemStackHandler> handlerIn, PlayerEntity player, Hand hand){
         AtomicBoolean inserted = new AtomicBoolean(false);
-        if(!player.getHeldItem(hand).isEmpty()){
+        if(!player.getHeldItem(hand).isEmpty() && hand == Hand.MAIN_HAND){
             handlerIn.ifPresent(handler -> {
                 for(int i = 0; i < handler.getSlots(); i++){
                     ItemStack returnStack = handler.insertItem(i, player.getHeldItem(hand), false);
@@ -65,19 +65,19 @@ public class TileBase extends TileEntity {
     }
 
     public boolean retrieveItemFromHandler(LazyOptional<ItemStackHandler> handlerIn, PlayerEntity player, Hand hand){
-        AtomicBoolean inserted = new AtomicBoolean(false);
-        if(!player.getHeldItem(hand).isEmpty()){
+        AtomicBoolean extracted = new AtomicBoolean(false);
+        if(player.getHeldItem(hand).isEmpty() && hand == Hand.MAIN_HAND){
             handlerIn.ifPresent(handler -> {
                 for(int i = handler.getSlots() - 1; i >= 0; i--){
                     ItemStack returnStack = handler.extractItem(i, 1, false);
-                    if(returnStack.getCount() != player.getHeldItem(hand).getCount()){
-                        player.setHeldItem(hand, returnStack);
-                        inserted.set(true);
-                        break;
+                    if(returnStack != ItemStack.EMPTY){
+                        player.addItemStackToInventory(returnStack);
+                        extracted.set(true);
+                        return;
                     }
                 }
             });
         }
-        return inserted.get();
+        return extracted.get();
     }
 }

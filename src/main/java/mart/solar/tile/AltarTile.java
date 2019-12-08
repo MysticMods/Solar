@@ -30,6 +30,10 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
         if(insertItemInHandler(handler, player, hand)){
             return;
         }
+
+        if(retrieveItemFromHandler(handler, player, hand)){
+            return;
+        }
     }
 
     @Override
