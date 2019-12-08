@@ -1,5 +1,6 @@
 package mart.solar.tile.base;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -79,5 +80,19 @@ public class TileBase extends TileEntity {
             });
         }
         return extracted.get();
+    }
+
+    public void emptyItemHandler(LazyOptional<ItemStackHandler> handlerIn){
+        handlerIn.ifPresent(inventory -> {
+            for(int i = 0; i < inventory.getSlots(); i++){
+                inventory.setStackInSlot(0, ItemStack.EMPTY);
+            }
+        });
+    }
+
+    public void syncTileEntity(){
+        markDirty();
+        BlockState state = world.getBlockState(pos);
+        world.notifyBlockUpdate(pos, state, state, 3);
     }
 }

@@ -16,13 +16,20 @@ import java.util.Map;
 
 public class SolarUtil {
 
+    private static Map<Block, IEnergyEnum> elementsBlocksList = null;
+
     public static Map<Block, IEnergyEnum> getElementalAllBlocksAsMap(){
+        if(elementsBlocksList != null){
+            return elementsBlocksList;
+        }
+
         Map<Block, IEnergyEnum> elementalBlocks = new HashMap<>();
         for(IEnergyEnum energy : Solar.ENERGY.getEnergies().values()){
             for(Block block : BlockTags.getCollection().get(new ResourceLocation("solar", "energy/" + energy.getName())).getAllElements()){
                 elementalBlocks.put(block, energy);
             }
         }
+        elementsBlocksList = elementalBlocks;
         return elementalBlocks;
     }
 

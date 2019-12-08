@@ -29,8 +29,7 @@ public class AltarBlock extends Block implements ITile {
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         AltarTile tile = (AltarTile) worldIn.getTileEntity(pos);
-        tile.activate(state, worldIn, pos, player, handIn, hit);
-        return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+        return tile.activate(state, worldIn, pos, player, handIn, hit);
     }
 
     @Override

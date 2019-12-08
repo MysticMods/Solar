@@ -3,6 +3,7 @@ package mart.solar.setup;
 import epicsquid.mysticallib.util.ListUtil;
 import mart.solar.ritual.Ritual;
 import mart.solar.ritual.RitualOfAshes;
+import mart.solar.ritual.crafting.CelestialHoeRitual;
 import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
@@ -14,7 +15,13 @@ public class ModRituals {
     private static Map<String, Ritual> ritualList = new HashMap<>();
 
     public static void init(){
+        //Ritual
         registerRitual(new RitualOfAshes());
+
+        //Spell
+
+        //Crafting
+        registerRitual(new CelestialHoeRitual());
     }
 
     public static void registerRitual(Ritual ritual){

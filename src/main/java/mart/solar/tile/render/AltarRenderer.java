@@ -17,9 +17,9 @@ public class AltarRenderer extends TileEntityRenderer<AltarTile> {
     private ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
     private Map<Integer, Float> itemPositions = new HashMap<>();
 
-    static final float SPEED = (float)(Math.PI) * 2 * 2 / 180;
+    private static final float SPEED = (float)(Math.PI) * 2 * 2 / 180;
 
-    int radius = 1;
+    private int radius = 1;
 
     public AltarRenderer(){
         itemPositions.put(0, 0f);
@@ -31,19 +31,19 @@ public class AltarRenderer extends TileEntityRenderer<AltarTile> {
     }
 
     @Override
-    public void render(AltarTile tileEntityIn, double x, double y, double z, float partialTicks, int destroyStage) {
-        tileEntityIn.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(inventory ->{
+    public void render(AltarTile te, double x, double y, double z, float partialTicks, int destroyStage) {
+        te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(inventory ->{
             int slots = SolarUtil.getFilledSlots(inventory);
 
             for(int i = 0; i < slots; i++){
                 GlStateManager.pushMatrix();
                 GlStateManager.translatef(
-                        (float)x + 0.5f + (float)(Math.cos(((tileEntityIn.getWorld().getGameTime()+partialTicks) * SPEED) + itemPositions.get(i)) * radius),
-                        (float)y + 1 + ((tileEntityIn.getInitTicks() + partialTicks) / 40),
-                        (float)z + 0.5f + (float)(Math.sin(((tileEntityIn.getWorld().getGameTime()+partialTicks) * SPEED) + itemPositions.get(i)) * radius)
+                        (float)x + 0.5f + (float)(Math.cos(((te.getWorld().getGameTime()+partialTicks) * SPEED) + itemPositions.get(i)) * te.getItemRadius()),
+                        (float)y + 1 + ((te.getInitTicks() + partialTicks) / 40),
+                        (float)z + 0.5f + (float)(Math.sin(((te.getWorld().getGameTime()+partialTicks) * SPEED) + itemPositions.get(i)) * te.getItemRadius())
                 );
 
-                if(tileEntityIn.getState() != AltarTile.AltarState.INIT){
+                if(te.getState() != AltarTile.AltarState.INIT){
                     GlStateManager.translatef(0, -(partialTicks / 40), 0);
                 }
 
@@ -54,6 +54,6 @@ public class AltarRenderer extends TileEntityRenderer<AltarTile> {
 
         });
 
-        super.render(tileEntityIn, x, y, z, partialTicks, destroyStage);
+        super.render(te, x, y, z, partialTicks, destroyStage);
     }
 }
