@@ -2,7 +2,7 @@ package mart.solar;
 
 import mart.solar.setup.ModBlocks;
 import mart.solar.setup.ModParticles;
-import mart.solar.tile.ITile;
+import mart.solar.tile.base.ITile;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleType;

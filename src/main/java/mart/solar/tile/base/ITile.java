@@ -1,4 +1,4 @@
-package mart.solar.tile;
+package mart.solar.tile.base;
 
 import java.util.function.Supplier;
 

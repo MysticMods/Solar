@@ -12,8 +12,10 @@ public class EnergyParticle extends ParticleBase {
 
     protected EnergyParticle(World world, double posX, double posY, double posZ, double motionX, double motionY, double motionZ, float[] data) {
         super(world, posX, posY, posZ, motionX, motionY, motionZ, data);
-        this.setMaxAge(60);
+        this.setMaxAge((int) data[7]);
         setTextureLocation(new ResourceLocation("solar:textures/particles/energy.png"));
+
+        this.particleScale = data[6];
 
         this.goalX = data[0];
         this.goalY = data[1];
@@ -35,7 +37,6 @@ public class EnergyParticle extends ParticleBase {
         this.motionY *= 0.95f;
         this.motionZ *= 0.95f;
 
-        this.particleScale = 0.1f;
         this.particleAlpha = 1f;
 
         BlockPos beginVec = new BlockPos(this.posX, this.posY, this.posZ);

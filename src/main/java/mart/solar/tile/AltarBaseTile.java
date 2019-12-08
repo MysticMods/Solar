@@ -6,6 +6,7 @@ import mart.solar.particle.energy.EnergyParticleData;
 import mart.solar.setup.ModBlocks;
 import mart.solar.setup.ModParticles;
 import mart.solar.setup.ModTiles;
+import mart.solar.tile.base.TileBase;
 import mart.solar.util.RgbColor;
 import mart.solar.util.RgbColorUtil;
 import mart.solar.util.SolarUtil;
@@ -152,7 +153,7 @@ public class AltarBaseTile  extends TileBase implements ITickableTileEntity {
                             float randY = Util.rand.nextFloat() -0.5f;
                             float randZ = Util.rand.nextFloat() -0.5f;
                             if(ModParticles.ENERGY != null){
-                                EnergyParticleData data = new EnergyParticleData(1, rgbColor.getRed(),rgbColor.getGreen(), rgbColor.getBlue(),
+                                EnergyParticleData data = new EnergyParticleData(1, 60, rgbColor.getRed(),rgbColor.getGreen(), rgbColor.getBlue(),
                                         getPos().getX()+0.5f, getPos().getY()+0.5f, getPos().getZ()+0.5f);
                                 world.addParticle(data, false, beginPos.getX() + 0.5f + randX,beginPos.getY() + .5f + randY,beginPos.getZ() + 0.5f + randZ, 0, 0, 0);
                             }

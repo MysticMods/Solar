@@ -1,4 +1,4 @@
-package mart.solar.tile;
+package mart.solar.tile.base;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

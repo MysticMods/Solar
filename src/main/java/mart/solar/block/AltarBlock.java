@@ -1,7 +1,7 @@
 package mart.solar.block;
 
 import mart.solar.tile.AltarTile;
-import mart.solar.tile.ITile;
+import mart.solar.tile.base.ITile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

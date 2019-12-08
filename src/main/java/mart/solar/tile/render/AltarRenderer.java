@@ -32,8 +32,6 @@ public class AltarRenderer extends TileEntityRenderer<AltarTile> {
 
     @Override
     public void render(AltarTile tileEntityIn, double x, double y, double z, float partialTicks, int destroyStage) {
-
-
         tileEntityIn.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(inventory ->{
             int slots = SolarUtil.getFilledSlots(inventory);
 
@@ -41,11 +39,16 @@ public class AltarRenderer extends TileEntityRenderer<AltarTile> {
                 GlStateManager.pushMatrix();
                 GlStateManager.translatef(
                         (float)x + 0.5f + (float)(Math.cos(((tileEntityIn.getWorld().getGameTime()+partialTicks) * SPEED) + itemPositions.get(i)) * radius),
-                        (float)y + 1,
+                        (float)y + 1 + ((tileEntityIn.getInitTicks() + partialTicks) / 40),
                         (float)z + 0.5f + (float)(Math.sin(((tileEntityIn.getWorld().getGameTime()+partialTicks) * SPEED) + itemPositions.get(i)) * radius)
                 );
+
+                if(tileEntityIn.getState() != AltarTile.AltarState.INIT){
+                    GlStateManager.translatef(0, -(partialTicks / 40), 0);
+                }
+
                 GlStateManager.scalef(0.3f, 0.3f, 0.3f);
-                renderer.renderItem(inventory.getStackInSlot(0), ItemCameraTransforms.TransformType.FIXED);
+                renderer.renderItem(inventory.getStackInSlot(i), ItemCameraTransforms.TransformType.FIXED);
                 GlStateManager.popMatrix();
             }
 

@@ -12,12 +12,13 @@ import java.util.Locale;
 
 public class EnergyParticleData implements IParticleData {
 
-    public final float size;
+    public final float size, lifetime;
     public final float r, g, b;
     public final float goalX, goalY, goalZ;
 
-    public EnergyParticleData(float size, float r, float g, float b, float goalX, float goalY, float goalZ) {
+    public EnergyParticleData(float size, float lifetime, float r, float g, float b, float goalX, float goalY, float goalZ) {
        this.size = size;
+       this.lifetime = lifetime;
        this.r = r;
        this.g = g;
        this.b = b;
@@ -34,6 +35,7 @@ public class EnergyParticleData implements IParticleData {
     @Override
     public void write(PacketBuffer buf) {
         buf.writeFloat(size);
+        buf.writeFloat(lifetime);
         buf.writeFloat(r);
         buf.writeFloat(g);
         buf.writeFloat(b);
@@ -45,8 +47,8 @@ public class EnergyParticleData implements IParticleData {
     @Nonnull
     @Override
     public String getParameters() {
-        return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f %s %s %s",
-                this.getType().getRegistryName(), this.size, this.r, this.g, this.b, this.goalX, this.goalY, this.goalZ);
+        return String.format(Locale.ROOT, "%s %s %.2f %.2f %.2f %.2f %s %s %s",
+                this.getType().getRegistryName(), this.size, this.lifetime, this.r, this.g, this.b, this.goalX, this.goalY, this.goalZ);
     }
 
     public static final IDeserializer<EnergyParticleData> DESERIALIZER = new IDeserializer<EnergyParticleData>() {
@@ -55,6 +57,8 @@ public class EnergyParticleData implements IParticleData {
         public EnergyParticleData deserialize(@Nonnull ParticleType<EnergyParticleData> type, @Nonnull StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
             float size = reader.readFloat();
+            reader.expect(' ');
+            float lifetime = reader.readFloat();
             reader.expect(' ');
             float r = reader.readFloat();
             reader.expect(' ');
@@ -69,12 +73,12 @@ public class EnergyParticleData implements IParticleData {
             float goalZ = reader.readFloat();
             reader.expect(' ');
 
-            return new EnergyParticleData(size, r, g, b, goalX, goalY, goalZ);
+            return new EnergyParticleData(size, lifetime, r, g, b, goalX, goalY, goalZ);
         }
 
         @Override
         public EnergyParticleData read(@Nonnull ParticleType<EnergyParticleData> type, PacketBuffer buf) {
-            return new EnergyParticleData(buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat());
+            return new EnergyParticleData(buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat(), buf.readFloat());
         }
     };
 }

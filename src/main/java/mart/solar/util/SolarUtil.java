@@ -3,6 +3,7 @@ package mart.solar.util;
 import mart.solar.Solar;
 import mart.solar.energy.IEnergyEnum;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -41,6 +42,16 @@ public class SolarUtil {
             }
         }
         return filled;
+    }
+
+    public static List<ItemStack> getItemsFromHandler(IItemHandler handler){
+        List<ItemStack> items = new ArrayList<>();
+        for(int i = 0; i < handler.getSlots(); i++){
+            if(!handler.getStackInSlot(i).isEmpty()){
+                items.add(handler.getStackInSlot(i));
+            }
+        }
+        return items;
     }
 
 

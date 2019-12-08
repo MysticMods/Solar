@@ -1,6 +1,11 @@
 package mart.solar.tile;
 
+import mart.solar.particle.energy.EnergyParticleData;
+import mart.solar.ritual.Ritual;
+import mart.solar.setup.ModRituals;
 import mart.solar.setup.ModTiles;
+import mart.solar.tile.base.TileBase;
+import mart.solar.util.SolarUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -20,6 +25,11 @@ import javax.annotation.Nonnull;
 
 public class AltarTile extends TileBase implements ITickableTileEntity {
 
+    private float initTicks = 0;
+
+    private Ritual currentRitual = null;
+    private AltarState state = AltarState.NONE;
+
     private LazyOptional<ItemStackHandler> handler = LazyOptional.of(this::createItemstackHandler);
 
     public AltarTile() {
@@ -27,6 +37,17 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
     }
 
     public void activate(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+        if(player.isSneaking()){
+            handler.ifPresent(inventory -> {
+                Ritual ritual = ModRituals.getRitual(SolarUtil.getItemsFromHandler(inventory));
+                if(ritual != null){
+                    this.currentRitual = ritual;
+                    this.state = AltarState.INIT;
+                }
+            });
+            return;
+        }
+
         if(insertItemInHandler(handler, player, hand)){
             return;
         }
@@ -38,7 +59,21 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
 
     @Override
     public void tick() {
+        if(state == AltarState.INIT){
+            if(initTicks >= 80){
+                state = AltarState.ENERGY;
+            }
 
+            initTicks++;
+        }
+
+        if(state == AltarState.ENERGY){
+            if(world.getGameTime() % 1 == 0){
+                EnergyParticleData data = new EnergyParticleData(0.2f, 20, 255 ,255, 255, getPos().getX() +0.5f, getPos().getY()+ 3f, getPos().getZ()+0.5f);
+                world.addParticle(data, false, getPos().getX() +0.5f, getPos().getY()+ 3f, getPos().getZ()+0.5f, 0, 0, 0);
+
+            }
+        }
     }
 
     @Override
@@ -87,5 +122,20 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
 
         }
         return LazyOptional.empty();
+    }
+
+
+    public float getInitTicks() {
+        return initTicks;
+    }
+
+    public AltarState getState() {
+        return state;
+    }
+
+    public enum AltarState{
+        NONE,
+        INIT,
+        ENERGY;
     }
 }
