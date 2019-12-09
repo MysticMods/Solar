@@ -4,9 +4,9 @@ import epicsquid.mysticallib.registry.ModRegistry;
 import mart.solar.setup.ModBlocks;
 import mart.solar.setup.ModEnergies;
 import mart.solar.setup.ModSetup;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -18,7 +18,7 @@ public class Solar {
   public static ItemGroup GROUP = new ItemGroup(Solar.MODID) {
     @Override
     public ItemStack createIcon() {
-      return new ItemStack(Items.PUMPKIN);
+      return new ItemStack(Item.getItemFromBlock(ModBlocks.ALTAR.get()));
     }
   };
 

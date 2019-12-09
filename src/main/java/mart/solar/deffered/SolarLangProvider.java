@@ -1,14 +1,14 @@
 package mart.solar.deffered;
 
 import epicsquid.mysticallib.client.data.DeferredLanguageProvider;
-import epicsquid.mysticalworld.MysticalWorld;
+import mart.solar.Solar;
 import mart.solar.setup.ModBlocks;
 import net.minecraft.data.DataGenerator;
 
 public class SolarLangProvider extends DeferredLanguageProvider {
 
     public SolarLangProvider(DataGenerator gen) {
-        super(gen, MysticalWorld.MODID);
+        super(gen, Solar.MODID);
     }
 
     @Override

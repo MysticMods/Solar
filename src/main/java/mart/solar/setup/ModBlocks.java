@@ -3,6 +3,7 @@ package mart.solar.setup;
 import mart.solar.Solar;
 import mart.solar.block.AltarBaseBlock;
 import mart.solar.block.AltarBlock;
+import mart.solar.block.SunburntGlassBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -31,7 +32,7 @@ public class ModBlocks {
     public static RegistryObject<Block> EMERALD_ENDORSED_SUNBURNT_STONE = Solar.REGISTRY.registerBlock("emerald_endorsed_sunburnt_stone", Solar.REGISTRY.block(Block::new, () -> Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)), SIG);
     public static RegistryObject<Block> DIAMOND_ENDORSED_SUNBURNT_STONE = Solar.REGISTRY.registerBlock("diamond_endorsed_sunburnt_stone", Solar.REGISTRY.block(Block::new, () -> Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)), SIG);
     
-    public static RegistryObject<Block> SUNBURNT_GLASS = Solar.REGISTRY.registerBlock("sunburnt_glass", Solar.REGISTRY.block(Block::new, () -> Block.Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS)), SIG);
+    public static RegistryObject<SunburntGlassBlock> SUNBURNT_GLASS = Solar.REGISTRY.registerBlock("sunburnt_glass", Solar.REGISTRY.block(SunburntGlassBlock::new, () -> Block.Properties.create(Material.GLASS).hardnessAndResistance(0.3F).sound(SoundType.GLASS)), SIG);
 
     public static void load() {
     }
