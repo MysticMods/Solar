@@ -5,9 +5,11 @@ import mart.solar.setup.ModParticles;
 import mart.solar.tile.base.ITile;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -55,6 +57,14 @@ public class RegistryManager {
     @SubscribeEvent
     public static void registerCuriosEvent(InterModEnqueueEvent event){
         InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
+    }
+
+    @SubscribeEvent
+    public static void attachCapabilitiesEntity(AttachCapabilitiesEvent<ItemStack> event) {
+//        if(event.getObject() instanceof ){
+//            event.addCapability(EnergyCapabilityProvider.IDENTIFIER, new EnergyCapabilityProvider());
+//        }
+
     }
 
 //  @SubscribeEvent
