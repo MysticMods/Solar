@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "solar:blocks/menhir",
-		"particle": "solar:blocks/menhir"
+		"0": "solar:block/menhir",
+		"particle": "solar:block/menhir"
 	},
 	"elements": [
 		{

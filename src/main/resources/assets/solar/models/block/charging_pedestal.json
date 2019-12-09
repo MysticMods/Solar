@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "solar:blocks/charging_pedestal",
-		"particle": "solar:blocks/charging_pedestal"
+		"0": "solar:block/charging_pedestal",
+		"particle": "solar:block/charging_pedestal"
 	},
 	"elements": [
 		{

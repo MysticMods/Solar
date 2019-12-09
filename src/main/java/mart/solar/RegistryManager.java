@@ -25,6 +25,7 @@ public class RegistryManager {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         blocks.add(ModBlocks.ALTAR_BASE.get());
         blocks.add(ModBlocks.ALTAR.get());
+        blocks.add(ModBlocks.SUNBURNT_STONE.get());
 
     }
 

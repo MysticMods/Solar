@@ -1,12 +1,12 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "solar:blocks/altar/altar_0",
-		"1": "solar:blocks/altar/altar_1",
-		"2": "solar:blocks/altar/altar_2",
-		"3": "solar:blocks/altar/altar_3",
-		"4": "solar:blocks/altar/altar_4",
-		"particle": "solar:blocks/altar/altar_0"
+		"0": "solar:block/altar/altar_0",
+		"1": "solar:block/altar/altar_1",
+		"2": "solar:block/altar/altar_2",
+		"3": "solar:block/altar/altar_3",
+		"4": "solar:block/altar/altar_4",
+		"particle": "solar:block/altar/altar_0"
 	},
 	"elements": [
 		{

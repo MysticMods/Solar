@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "mysticalworld:blocks/solar_infused_stone",
-		"particle": "mysticalworld:blocks/solar_infused_stone"
+		"0": "mysticalworld:block/solar_infused_stone",
+		"particle": "mysticalworld:block/solar_infused_stone"
 	},
 	"elements": [
 		{

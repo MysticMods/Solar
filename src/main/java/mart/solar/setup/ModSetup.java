@@ -1,5 +1,8 @@
 package mart.solar.setup;
 
+import mart.solar.deffered.SolarBlockstateProvider;
+import mart.solar.deffered.SolarItemModelProvider;
+import mart.solar.deffered.SolarLangProvider;
 import mart.solar.util.RgbColorUtil;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -17,9 +20,9 @@ public class ModSetup {
     public void gatherData (GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            //gen.addProvider(new EmbersBlockstateProvider(gen, event.getExistingFileHelper()));
-            //gen.addProvider(new EmbersItemModelProvider(gen, event.getExistingFileHelper()));
-            //gen.addProvider(new EmbersLangProvider(gen));
+            gen.addProvider(new SolarBlockstateProvider(gen, event.getExistingFileHelper()));
+            gen.addProvider(new SolarItemModelProvider(gen, event.getExistingFileHelper()));
+            gen.addProvider(new SolarLangProvider(gen));
         }
         if (event.includeServer()) {
         }

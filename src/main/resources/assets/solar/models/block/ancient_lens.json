@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "solar:blocks/glass",
-		"1": "solar:blocks/glass_lens_bottomside",
-		"particle": "solar:blocks/glass"
+		"0": "solar:block/glass",
+		"1": "solar:block/glass_lens_bottomside",
+		"particle": "solar:block/glass"
 	},
 	"elements": [
 		{

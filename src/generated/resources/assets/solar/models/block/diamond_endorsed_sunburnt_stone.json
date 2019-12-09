@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "solar:block/diamond_endorsed_sunburnt_stone"
+  }
+}
