@@ -3,6 +3,7 @@ package mart.solar.deffered;
 import epicsquid.mysticallib.client.data.DeferredLanguageProvider;
 import mart.solar.Solar;
 import mart.solar.setup.ModBlocks;
+import mart.solar.setup.ModItems;
 import net.minecraft.data.DataGenerator;
 
 public class SolarLangProvider extends DeferredLanguageProvider {
@@ -27,6 +28,9 @@ public class SolarLangProvider extends DeferredLanguageProvider {
         addBlock(ModBlocks.EMERALD_ENDORSED_SUNBURNT_STONE);
         addBlock(ModBlocks.DIAMOND_ENDORSED_SUNBURNT_STONE);
         addBlock(ModBlocks.SUNBURNT_GLASS);
+
+        addItem(ModItems.SOLAR_RING);
+        addItem(ModItems.LUNAR_RING);
 
         super.addTranslations();
     }

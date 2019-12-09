@@ -3,6 +3,7 @@ package mart.solar;
 import epicsquid.mysticallib.registry.ModRegistry;
 import mart.solar.setup.ModBlocks;
 import mart.solar.setup.ModEnergies;
+import mart.solar.setup.ModItems;
 import mart.solar.setup.ModSetup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -10,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
 
 @Mod("solar")
 public class Solar {
@@ -33,6 +35,7 @@ public class Solar {
 
 
     ModBlocks.load();
+    ModItems.load();
 
     REGISTRY.registerEventBus(modBus);
   }

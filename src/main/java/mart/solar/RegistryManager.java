@@ -4,7 +4,6 @@ import mart.solar.setup.ModBlocks;
 import mart.solar.setup.ModParticles;
 import mart.solar.tile.base.ITile;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleType;
 import net.minecraft.tileentity.TileEntityType;
@@ -28,19 +27,11 @@ public class RegistryManager {
     private static List<Block> blocks = new ArrayList<>();
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+    public static void onTileRegistry(final RegistryEvent.Register<TileEntityType<?>> event){
         blocks.add(ModBlocks.ALTAR_BASE.get());
         blocks.add(ModBlocks.ALTAR.get());
         blocks.add(ModBlocks.SUNBURNT_STONE.get());
 
-    }
-
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-    }
-
-    @SubscribeEvent
-    public static void onTileRegistry(final RegistryEvent.Register<TileEntityType<?>> event){
         for(Block block : blocks){
             if(block instanceof ITile){
                 event.getRegistry().register((TileEntityType<?>) TileEntityType.Builder.create(((ITile) block).getTile(), block).build(null)

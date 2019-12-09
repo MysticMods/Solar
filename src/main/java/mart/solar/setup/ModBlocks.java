@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
 
-    private static final Supplier<Item.Properties> SIG = () -> new Item.Properties().group(Solar.GROUP);
+    public static final Supplier<Item.Properties> SIG = () -> new Item.Properties().group(Solar.GROUP);
 
     public static RegistryObject<AltarBaseBlock> ALTAR_BASE = Solar.REGISTRY.registerBlock("altar_base", Solar.REGISTRY.block(AltarBaseBlock::new, () -> Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)), SIG);
     public static RegistryObject<AltarBlock> ALTAR = Solar.REGISTRY.registerBlock("altar", Solar.REGISTRY.block(AltarBlock::new, () -> Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)), SIG);

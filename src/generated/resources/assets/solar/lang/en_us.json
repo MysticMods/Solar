@@ -11,5 +11,7 @@
   "block.solar.sliced_sunburnt_stone": "Sliced Sunburnt Stone",
   "block.solar.sunburnt_glass": "Sunburnt Glass",
   "block.solar.sunburnt_stone": "Sunburnt Stone",
-  "block.solar.tangled_sunburnt_stone": "Tangled Sunburnt Stone"
+  "block.solar.tangled_sunburnt_stone": "Tangled Sunburnt Stone",
+  "item.solar.lunar_ring": "Lunar Ring",
+  "item.solar.solar_ring": "Solar Ring"
 }

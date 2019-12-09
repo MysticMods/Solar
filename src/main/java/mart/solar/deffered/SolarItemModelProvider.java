@@ -3,6 +3,7 @@ package mart.solar.deffered;
 import epicsquid.mysticallib.client.data.DeferredItemModelProvider;
 import mart.solar.Solar;
 import mart.solar.setup.ModBlocks;
+import mart.solar.setup.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
 
@@ -25,5 +26,8 @@ public class SolarItemModelProvider extends DeferredItemModelProvider {
         blockItem(ModBlocks.EMERALD_ENDORSED_SUNBURNT_STONE);
         blockItem(ModBlocks.DIAMOND_ENDORSED_SUNBURNT_STONE);
         blockItem(ModBlocks.SUNBURNT_GLASS);
+
+        generated(ModItems.SOLAR_RING);
+        generated(ModItems.LUNAR_RING);
     }
 }
