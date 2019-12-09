@@ -85,7 +85,7 @@ public class TileBase extends TileEntity {
     public void emptyItemHandler(LazyOptional<ItemStackHandler> handlerIn){
         handlerIn.ifPresent(inventory -> {
             for(int i = 0; i < inventory.getSlots(); i++){
-                inventory.setStackInSlot(0, ItemStack.EMPTY);
+                inventory.setStackInSlot(i, ItemStack.EMPTY);
             }
         });
     }

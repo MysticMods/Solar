@@ -7,9 +7,8 @@ public class RitualOfAshes extends Ritual{
 
     public RitualOfAshes() {
         super("ritual_of_ashes");
-        setRitualItems(Items.COAL, Items.FLINT_AND_STEEL);
-        addRitualEnergy(EnergyEnum.FIRE, 2);
-        addRitualEnergy(EnergyEnum.WATER, 2);
+        setRitualItems(Items.COAL, Items.COAL);
+        addRitualEnergy(EnergyEnum.FIRE, 1);
     }
 
     @Override

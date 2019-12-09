@@ -124,22 +124,16 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
             }
 
             if(state == AltarState.FINISHED){
-                System.out.println("doesnt even get here");
                 for(int i = 0; i < 20; i++){
                     float randX = ((Util.rand.nextInt(600) -300) / 100f);
                     float randY = ((Util.rand.nextInt(600) -300) / 100f);
                     float randZ = ((Util.rand.nextInt(600) -300) / 100f);
-                    System.out.println(randX);
-                    System.out.println(randY);
-                    System.out.println(randZ);
                     int energy = Util.rand.nextInt(this.currentRitual.getRitualEnergy().size());
                     RgbColor rgbColor = RgbColorUtil.getEnergyColor(this.currentRitual.getEnergyList().get(energy));
                     EnergyParticleData siphonData = new EnergyParticleData(0.2f, 60, rgbColor.getRed(),rgbColor.getGreen(), rgbColor.getBlue(),
                             getPos().getX() + 0.5f + randX, getPos().getY() + 3.5f  + randY, getPos().getZ() + 0.5f  + randZ);
                     world.addParticle(siphonData, false, this.pos.getX() + 0.5f,this.pos.getY() + 3.5f,this.pos.getZ() + 0.5f, 0, 0, 0);
                 }
-                System.out.println("doesnt even get here2");
-                state = AltarState.NONE;
             }
         }
         else{
@@ -166,7 +160,7 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
                                 this.siphonedBlock = nextBlock;
                                 this.state = AltarState.SIPHON;
                                 syncTileEntity();
-                                break;
+                                return;
                             }
                         }
                     }
@@ -191,6 +185,7 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
                         this.state = AltarState.SEARCH;
                     }
                     syncTileEntity();
+                    return;
                 }
             }
         }
@@ -201,19 +196,25 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
                 this.state = AltarState.FINISHED;
                 emptyItemHandler(this.handler);
                 syncTileEntity();
+                return;
             }
         }
 
         if(state == AltarState.FINISHED){
+            System.out.println("finish");
             if(this.currentRitual instanceof CraftingRitual){
                 CraftingRitual ritual = (CraftingRitual) this.currentRitual;
 
                 if(!world.isRemote){
                     world.addEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 3.5f, pos.getZ(), new ItemStack(ritual.getOutput())));
-                    this.state = AltarState.NONE;
-                    this.energySize = 0.2f;
-                    this.itemRadius = 1f;
                 }
+
+                this.state = AltarState.NONE;
+                this.currentRitual = null;
+                this.energySize = 0.2f;
+                this.itemRadius = 1f;
+                this.initTicks = 0;
+                syncTileEntity();
             }
         }
 
@@ -227,6 +228,7 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
         this.siphonTicks = tag.getFloat("siphonTicks");
         this.state = AltarState.valueOf(tag.getString("state"));
         this.energySize = tag.getFloat("energySize");
+        this.initTicks = tag.getFloat("initTicks");
 
         if(tag.get("siphonedBlock") != null){
             this.siphonedBlock = NBTUtil.readBlockPos((CompoundNBT) tag.get("siphonedBlock"));
@@ -245,6 +247,7 @@ public class AltarTile extends TileBase implements ITickableTileEntity {
         tag.putString("state", this.state.name());
         tag.putFloat("siphonTicks", this.siphonTicks);
         tag.putFloat("energySize", this.energySize);
+        tag.putFloat("initTicks", this.initTicks);
 
         if(this.siphonedBlock != null){
             tag.put("siphonedBlock", NBTUtil.writeBlockPos(this.siphonedBlock));
